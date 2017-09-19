@@ -238,7 +238,7 @@ $(document).ready(function(){
 	});
 	
 	// show donate popup
-	setTimeout(function() {
+	/*setTimeout(function() {
 		$('#feedbackPopup').slideDown(400);
 	}, 10000);
     $('#social').hover(function() {
@@ -267,7 +267,7 @@ $(document).ready(function(){
 	});
 	$('#feedbackPopup a').mouseout(function() {
 		clearTimeout(timeoutIdHideBtn);
-	});
+	});*/
 });
 
 $(window).resize(function() {

