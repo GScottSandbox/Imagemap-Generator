@@ -303,7 +303,7 @@ if(isset($_SESSION['image']) && $_SESSION['image'] != null && !empty($_SESSION['
 				<h3>About me</h3>
 				<p>Hi folks, My name is <a href="https://plus.google.com/113304109683958874741/" target="_blank">Dario</a>, I'm a web developer and freelance programmer in Hamburg, Germany. I build this tool for easily developing Newsletter and Landingpages.</p>
 				<p>In some kinds of HTML, for example email templates, you don't have the opportunity to use special CSS hacks. It's better to use many images with a lot of links via image maps.</p>
-				<p><b>PS: Thanks for your donations :-)</b></p>
+				<!--<p><b>PS: Thanks for your donations :-)</b></p>-->
 			</div>
 		</article>
 	</div>
@@ -367,7 +367,9 @@ if(isset($_SESSION['image']) && $_SESSION['image'] != null && !empty($_SESSION['
 	
 		<div id="coinHive" class="insetEffect ">
 			<p><b>Info:</b> Instead of watching ads, your computer is mining small amounts of cryptocurrency to support this website.
-				If you don't want to support, you can <span id="minebutton">stop</span> at anytime. <a href="https://coin-hive.com/" target="_blank">more infos</a></p>
+				If you don't want to support this, you can click here to <span id="minebutton">stop</span>.
+				<!--<a href="https://coin-hive.com/" target="_blank">More infos.</a>-->
+				</p>
 			
 		</div>
 	</div>
