@@ -367,6 +367,7 @@ input, textarea, #urlMessage p {
 		width: 135px;
 		height: 135px;
 		background: url(../images/fork.png) no-repeat left top transparent;
+		background-size: 90%;
 	}
 	#header .fork a {
 		position: absolute;
@@ -733,7 +734,6 @@ footer {
 	top: 6px;
 	right: 6px;
 	width: 240px;
-	height: 100px;
 	font-size: 0.9em;
     background-color: #353535;
     color: #bdbdbd;

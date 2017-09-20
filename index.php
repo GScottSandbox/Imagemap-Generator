@@ -293,18 +293,19 @@ if(isset($_SESSION['image']) && $_SESSION['image'] != null && !empty($_SESSION['
 			<div class="infobox2">
 				<h2>About this Imagemap Tool</h2>
 				<img src="images/generator-html-thumb.gif" class="img" alt="" title="" />
-				<p>This Software generates HTML Imagemaps and &lt;area&gt;-tags by clicking in an uploaded image.</p>
+				<!--<p>This Software generates HTML Imagemaps and &lt;area&gt;-tags by clicking in an uploaded image.</p>
 				<p>Usage:</p>
 				<ul>
 					<li>Upload or link an image</li>
 					<li>Click into the image to set coordinates</li>
 					<li>Copy the Imagemap HTML code</li>
 				</ul>
-				<h3>About me</h3>
-				<p>Hi folks, My name is <a href="https://plus.google.com/113304109683958874741/" target="_blank">Dario</a>, I'm a web developer and freelance programmer in Hamburg, Germany. I build this tool for easily developing Newsletter and Landingpages.</p>
-				<p>In some kinds of HTML, for example email templates, you don't have the opportunity to use special CSS hacks. It's better to use many images with a lot of links via image maps.</p>
-				
-				<p>Did you find Imagemap Generator useful?<br /><b>Give feedback or buy me a beer :-)</b></p>
+				<h3>About me</h3>-->
+				<p>Hello, my name is <a href="https://plus.google.com/113304109683958874741/" target="_blank">Dario</a> :)</p>
+				<!--I'm a Software Engineer in Hamburg. I built this tool for easily developing Newsletter and Landingpages</p>-->
+				<!--<p>In some kinds of HTML, I hadn't the opportunity to use special CSS hacks or JavaScript tricks. In this cases it's better to use images with a links via image maps.</p>-->
+				<p>Do you find Imagemap Generator helpful?<br /><b>Write me an E-Mail or buy me a beer :-)</b></p>
+				<p>Feedback? <span class="email"></span></p>
 				<div class="paypal">
 					<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 						<input type="hidden" name="cmd" value="_s-xclick">
@@ -313,6 +314,7 @@ if(isset($_SESSION['image']) && $_SESSION['image'] != null && !empty($_SESSION['
 						<img alt="" border="0" src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" width="1" height="1">
 					</form>
 				</div>
+				<p>This Software uses Google Analytics.<br />Uploads are deleted after 1 day.</p>
 				<p>PS: Thanks for your donations and mining power :-)</p>
 			</div>
 		</article>
@@ -345,25 +347,23 @@ if(isset($_SESSION['image']) && $_SESSION['image'] != null && !empty($_SESSION['
 		</div>
 	</div>
 	
-	<div id="infotext">
+	<!--<div id="infotext">
 		<address class="author"><b>Easy Imagemap Generator</b><br />
 		Uploads are deleted after 1 day<br />
 		This Software uses Google Analytics<br />
-		Feedback? <span class="email"></span><br />
-		Copyright &copy; <?php echo date('Y'); ?> by <a rel="author" href="https://plus.google.com/113304109683958874741/" title="Dario D. Müller">Dario D. Müller</a><br />
 		</address>
 	</div>
-	<div id="info"></div>
+	<div id="info"></div>-->
 	
 	<div id="dots"></div>
 	
 	<div id="social">
-		<?php $text = 'Easy%20Imagemap%20Generator%20for%20html%20image%20mapping:%20http://imagemap-generator.dariodomi.de'; ?>
+		<?php //$text = 'Easy%20Imagemap%20Generator%20for%20html%20image%20mapping:%20http://imagemap-generator.dariodomi.de'; ?>
 	
 		<div id="coinHive" class="insetEffect ">
 			<p><b>Info:</b> Instead of watching ads, your computer is mining small amounts of cryptocurrency to support this website.
 				Click here to <span id="minebutton">stop</span>.
-				If you want to support me, please let the tab opened while not using it.</p>
+				If you want to support me, please let the tab opened while not using it. Your progress: <span id="progress">0</span></p>
 		</div>
 	</div>
 	
@@ -374,7 +374,7 @@ if(isset($_SESSION['image']) && $_SESSION['image'] != null && !empty($_SESSION['
 	</div>-->
 	
 	<footer>
-		<p>Project &copy; <?php echo date("Y"); ?> by <a href="http://dariodomi.de" target="_blank">Dario D. M&uuml;ller</a><!--<span></span><a href="http://dariodomi.de/contact" target="_blank">Feedback &amp; Contact</a>--></p>
+		<p>Imagemap Generator &copy; <?php echo date("Y"); ?> by <a href="http://dariodomi.de" target="_blank">Dario D. M&uuml;ller</a></p>
 	</footer>
 	
 	<!-- jQuery File Upload -->
@@ -430,6 +430,7 @@ if(isset($_SESSION['image']) && $_SESSION['image'] != null && !empty($_SESSION['
 		var text = '';
 		if (miner.isRunning()) {
 			text = '<a href="#" onclick="miner.stop(); return false;">Stop</a>';
+			document.getElementById("progress").innerHTML = miner.getTotalHashes();
 		} else {
 			text = '<a href="#" onclick="miner.start(CoinHive.FORCE_EXCLUSIVE_TAB); return false;">Start</a>';
 		}
