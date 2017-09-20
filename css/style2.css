@@ -389,7 +389,7 @@ input, textarea, #urlMessage p {
 #aboutinfos {
 	border-top: 5px solid #36715C;
 }
-#aboutinfos img {
+#aboutinfos img.img {
     display: block;
     float: right;
     margin: 0 0 10px 10px;
@@ -732,7 +732,7 @@ footer {
 	position: absolute;
 	top: 6px;
 	right: 6px;
-	width: 210px;
+	width: 240px;
 	height: 100px;
 	font-size: 0.9em;
     background-color: #353535;

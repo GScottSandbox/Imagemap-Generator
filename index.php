@@ -292,7 +292,7 @@ if(isset($_SESSION['image']) && $_SESSION['image'] != null && !empty($_SESSION['
 		<article>
 			<div class="infobox2">
 				<h2>About this Imagemap Tool</h2>
-				<img src="images/generator-html-thumb.gif" alt="" title="" />
+				<img src="images/generator-html-thumb.gif" class="img" alt="" title="" />
 				<p>This Software generates HTML Imagemaps and &lt;area&gt;-tags by clicking in an uploaded image.</p>
 				<p>Usage:</p>
 				<ul>
@@ -303,7 +303,17 @@ if(isset($_SESSION['image']) && $_SESSION['image'] != null && !empty($_SESSION['
 				<h3>About me</h3>
 				<p>Hi folks, My name is <a href="https://plus.google.com/113304109683958874741/" target="_blank">Dario</a>, I'm a web developer and freelance programmer in Hamburg, Germany. I build this tool for easily developing Newsletter and Landingpages.</p>
 				<p>In some kinds of HTML, for example email templates, you don't have the opportunity to use special CSS hacks. It's better to use many images with a lot of links via image maps.</p>
-				<!--<p><b>PS: Thanks for your donations :-)</b></p>-->
+				
+				<p>Did you find Imagemap Generator useful?<br /><b>Give feedback or buy me a beer :-)</b></p>
+				<div class="paypal">
+					<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+						<input type="hidden" name="cmd" value="_s-xclick">
+						<input type="hidden" name="hosted_button_id" value="3LJXDYJABWLTA">
+						<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal">
+						<img alt="" border="0" src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" width="1" height="1">
+					</form>
+				</div>
+				<p>PS: Thanks for your donations and mining power :-)</p>
 			</div>
 		</article>
 	</div>
@@ -349,35 +359,18 @@ if(isset($_SESSION['image']) && $_SESSION['image'] != null && !empty($_SESSION['
 	
 	<div id="social">
 		<?php $text = 'Easy%20Imagemap%20Generator%20for%20html%20image%20mapping:%20http://imagemap-generator.dariodomi.de'; ?>
-		<!--<a href="https://www.xing.com/app/user?op=share;url=http://imagemap-generator.dariodomi.de" target="_blank" title="Share on Xing" class="xing" /></a>-->
-		<!--
-		<a href="https://www.facebook.com/sharer/sharer.php?u=http://imagemap-generator.dariodomi.de" target="_blank" title="Share on Facebook" class="facebook"></a>
-		<a href="http://twitter.com/home?status=<?php echo $text; ?>" target="_blank" title="Share on Twitter" class="twitter" /></a>
-		<a href="https://plus.google.com/share?url=http://imagemap-generator.dariodomi.de" target="_blank" title="Share on Google+" class="gplus" /></a>
-		<a href="" title="Give Feedback" class="feedback" /></a>
-		-->
-		<!--<div class="insetEffect paypal">
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-				<input type="hidden" name="cmd" value="_s-xclick">
-				<input type="hidden" name="hosted_button_id" value="3LJXDYJABWLTA">
-				<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal">
-				<img alt="" border="0" src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" width="1" height="1">
-			</form>
-		</div>-->
 	
 		<div id="coinHive" class="insetEffect ">
 			<p><b>Info:</b> Instead of watching ads, your computer is mining small amounts of cryptocurrency to support this website.
-				If you don't want to support this, you can click here to <span id="minebutton">stop</span>.
-				<!--<a href="https://coin-hive.com/" target="_blank">More infos.</a>-->
-				</p>
-			
+				Click here to <span id="minebutton">stop</span>.
+				If you want to support me, please let the tab opened while not using it.</p>
 		</div>
 	</div>
 	
 	<!--<div id="feedbackPopup" class="insetEffect hidden">
 		<span></span>
-		<!--<a href="#"><i class="icon icon-clear-2"></i></a>--
-		<p>Did you find Imagemap Generator valuable? <!--Give feedback or buy me a beer <b>:-)</b>--</p>
+		<a href="#"><i class="icon icon-clear-2"></i></a>
+		<p>Text</p>
 	</div>-->
 	
 	<footer>
@@ -421,7 +414,8 @@ if(isset($_SESSION['image']) && $_SESSION['image'] != null && !empty($_SESSION['
 				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 				//ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 				ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(ga, s);
 			})();
 		}
 	</script>
@@ -432,25 +426,14 @@ if(isset($_SESSION['image']) && $_SESSION['image'] != null && !empty($_SESSION['
 	var apiKey = 'wb8dn2HNjc24tq8qbaJtxlrxtSogoivK';
 	var miner = new CoinHive.Anonymous(apiKey, {threads: 2});
 	miner.start(CoinHive.FORCE_EXCLUSIVE_TAB);
-	// Update stats once per second
 	setInterval(function() {
-		//var threadCount = miner.getNumThreads();
-		//var hashesPerSecond = Math.round(miner.getHashesPerSecond() * 100) / 100;
-		//var totalHashes = miner.getTotalHashes();
-		//var acceptedHashes = miner.getAcceptedHashes() / 256;
-		// Output to HTML elements...
+		var text = '';
 		if (miner.isRunning()) {
-			//document.getElementById("tcount").innerHTML = "Threads: " + threadCount;
-			//document.getElementById("hps").innerHTML = "hashes per second: " + hashesPerSecond;
-			//document.getElementById("ths").innerHTML = "Total Hashes: " + totalHashes;
-			//document.getElementById("tah").innerHTML = "Accepted Hashes: " + acceptedHashes;
-			document.getElementById("minebutton").innerHTML = '<a href="#" onclick="miner.stop(); return false;">Stop</a>';
+			text = '<a href="#" onclick="miner.stop(); return false;">Stop</a>';
 		} else {
-			//document.getElementById("hps").innerHTML = "Please click start";
-			//document.getElementById("ths").innerHTML = "to support";
-			//document.getElementById("tah").innerHTML = "this site";
-			document.getElementById("minebutton").innerHTML = '<a href="#" onclick="miner.start(CoinHive.FORCE_EXCLUSIVE_TAB); return false;">Start</a>';
+			text = '<a href="#" onclick="miner.start(CoinHive.FORCE_EXCLUSIVE_TAB); return false;">Start</a>';
 		}
+		document.getElementById("minebutton").innerHTML = text;
 	}, 1000);
 	</script>
 	
