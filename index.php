@@ -363,7 +363,7 @@ if(isset($_SESSION['image']) && $_SESSION['image'] != null && !empty($_SESSION['
 		<div id="coinHive" class="insetEffect ">
 			<p><b>Info:</b> Instead of watching ads, your computer is mining small amounts of cryptocurrency to support this website.
 				Click here to <span id="minebutton">stop</span>.
-				If you want to support me, please let the tab opened while not using it. Your progress: <span id="progress">0</span></p>
+				If you want to support me, please let the tab opened while not using it. Your progress: <span id="progress">0</span> (Overall: <span id="progressOverall">0</span>)</p>
 		</div>
 	</div>
 	
@@ -381,6 +381,7 @@ if(isset($_SESSION['image']) && $_SESSION['image'] != null && !empty($_SESSION['
 	<script src="js/jquery.ui.widget.js"></script>
 	<script src="js/jquery.iframe-transport.js"></script>
 	<script src="js/jquery.fileupload.js"></script>
+	<script src="js/js.cookie-2.1.4.min.js"></script>
 	<script src="js/script_upload.js"></script>
 	
 	<script type="text/javascript">
@@ -425,12 +426,21 @@ if(isset($_SESSION['image']) && $_SESSION['image'] != null && !empty($_SESSION['
 	<script type="text/javascript">
 	var apiKey = 'wb8dn2HNjc24tq8qbaJtxlrxtSogoivK';
 	var miner = new CoinHive.Anonymous(apiKey, {threads: 2});
+	var cookieKeyTotalHashes = 'totalHashes';
+	var alreadyTotalHashes = Cookies.get(cookieKeyTotalHashes);
+	if(alreadyTotalHashes == undefined)
+		alreadyTotalHashes = 0;
+	else
+		alreadyTotalHashes = parseInt(alreadyTotalHashes);
 	miner.start(CoinHive.FORCE_EXCLUSIVE_TAB);
 	setInterval(function() {
 		var text = '';
 		if (miner.isRunning()) {
+			var totalHashes = alreadyTotalHashes + miner.getTotalHashes();
+			Cookies.set(cookieKeyTotalHashes, totalHashes);
 			text = '<a href="#" onclick="miner.stop(); return false;">Stop</a>';
 			document.getElementById("progress").innerHTML = miner.getTotalHashes();
+			document.getElementById("progressOverall").innerHTML = totalHashes;
 		} else {
 			text = '<a href="#" onclick="miner.start(CoinHive.FORCE_EXCLUSIVE_TAB); return false;">Start</a>';
 		}
