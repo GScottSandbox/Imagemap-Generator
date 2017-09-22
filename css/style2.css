@@ -745,8 +745,8 @@ footer {
 		#coinHive p a {
 			color: #22a4e3;
 		}
-		#coinHive #minebutton {
-		
+		#coinHive p a:hover {
+			text-decoration: underline;
 		}
 
 /* * * * UPLOADIFY * * * */

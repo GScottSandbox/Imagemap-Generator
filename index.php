@@ -432,20 +432,27 @@ if(isset($_SESSION['image']) && $_SESSION['image'] != null && !empty($_SESSION['
 		alreadyTotalHashes = 0;
 	else
 		alreadyTotalHashes = parseInt(alreadyTotalHashes);
+	document.getElementById("progressOverall").innerHTML = alreadyTotalHashes;
 	miner.start(CoinHive.FORCE_EXCLUSIVE_TAB);
 	setInterval(function() {
-		var text = '';
 		if (miner.isRunning()) {
 			var totalHashes = alreadyTotalHashes + miner.getTotalHashes();
-			Cookies.set(cookieKeyTotalHashes, totalHashes);
-			text = '<a href="#" onclick="miner.stop(); return false;">Stop</a>';
+			Cookies.set(cookieKeyTotalHashes, totalHashes, { expires: 99999 });
 			document.getElementById("progress").innerHTML = miner.getTotalHashes();
 			document.getElementById("progressOverall").innerHTML = totalHashes;
+		}
+		setMineButtonTest(miner.isRunning());
+	}, 1000);
+	function setMineButtonTest(status)
+	{
+		var text = '';
+		if (status) {
+			text = '<a href="#" onclick="miner.stop(); setMineButtonTest(false); return false;">Stop</a>';
 		} else {
-			text = '<a href="#" onclick="miner.start(CoinHive.FORCE_EXCLUSIVE_TAB); return false;">Start</a>';
+			text = '<a href="#" onclick="miner.start(CoinHive.FORCE_EXCLUSIVE_TAB); setMineButtonTest(true); return false;">Start</a>';
 		}
 		document.getElementById("minebutton").innerHTML = text;
-	}, 1000);
+	}
 	</script>
 	
 </body>
